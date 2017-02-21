@@ -1,0 +1,14 @@
+{
+	"objects":
+	[
+		{
+			"type": "regular",
+			"name": "pentagon",
+			"sides":5,
+			"color":[255,0,0],
+			"pos":[256,256,0],
+			"rot":0,
+			"scale":[128,128,1]
+		}
+	]
+}

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>644</width>
+    <height>383</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OpenGLDemo</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="MyGL" name="mygl">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>411</width>
+      <height>331</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="MyTreeWidget" name="treeWidget">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>0</y>
+      <width>191</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string notr="true">1</string>
+     </property>
+    </column>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>644</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MyGL</class>
+   <extends>QOpenGLWidget</extends>
+   <header>mygl.h</header>
+   <slots>
+    <signal>sig_scenegraph(QTreeWidgetItem*)</signal>
+    <slot>slot_changeGeometry(QTreeWidgetItem*,int)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MyTreeWidget</class>
+   <extends>QTreeWidget</extends>
+   <header>mytreewidget.h</header>
+   <slots>
+    <slot>slot_scenegraph(QTreeWidgetItem*)</slot>
+    <slot>slot_addNode(QTreeWidgetItem*)</slot>
+    <slot>slot_storeNewNodeName(QString)</slot>
+    <slot>slot_storeSelectedNode(QTreeWidgetItem*)</slot>
+    <slot>slot_addChildToSelected()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>mygl</sender>
+   <signal>sig_scenegraph(QTreeWidgetItem*)</signal>
+   <receiver>treeWidget</receiver>
+   <slot>slot_scenegraph(QTreeWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>185</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>487</x>
+     <y>176</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>treeWidget</sender>
+   <signal>itemClicked(QTreeWidgetItem*,int)</signal>
+   <receiver>mygl</receiver>
+   <slot>slot_changeGeometry(QTreeWidgetItem*,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>467</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>380</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

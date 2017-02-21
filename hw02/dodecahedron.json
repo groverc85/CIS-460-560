@@ -1,0 +1,12 @@
+{
+	"objects":
+	[
+		{
+			"type": "obj",
+			"name": "Dodecahedron",
+			"filename": "dodecahedron.obj",
+			"texture": "154.JPG",
+			"normal": "154_norm.JPG"
+		}
+	]
+}
